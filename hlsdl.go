@@ -22,6 +22,7 @@ import (
 
 func init() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
+	log.SetFlags(log.Lshortfile | log.LstdFlags)
 }
 
 // HlsDl present a HLS downloader
