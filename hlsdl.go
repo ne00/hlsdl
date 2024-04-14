@@ -83,6 +83,7 @@ func (hlsDl *HlsDl) downloadSegment(segment *Segment) error {
 	hlsDl.client.SetRetryCount(5).SetRetryWaitTime(time.Second)
 	resp, err := hlsDl.client.R().SetHeaders(hlsDl.headers).SetOutput(segment.Path).Get(segment.URI)
 	if err != nil {
+		log.Println(err)
 		return err
 	}
 	if resp.StatusCode() != http.StatusOK {
