@@ -55,7 +55,7 @@ func New(hlsURL string, headers map[string]string, dir, filename string, workers
 		filename = getFilename()
 	}
 	client := resty.New()
-	client.Log.SetFlags(log.Lshortfile | log.LstdFlags)
+	client.Debug = true
 	hlsdl := &HlsDl{
 		hlsURL:    hlsURL,
 		dir:       dir,
