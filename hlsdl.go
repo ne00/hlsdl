@@ -54,10 +54,12 @@ func New(hlsURL string, headers map[string]string, dir, filename string, workers
 	if filename == "" {
 		filename = getFilename()
 	}
+	client := resty.New()
+	client.Log.SetFlags(log.Lshortfile | log.LstdFlags)
 	hlsdl := &HlsDl{
 		hlsURL:    hlsURL,
 		dir:       dir,
-		client:    resty.New(),
+		client:    client,
 		workers:   workers,
 		enableBar: enableBar,
 		headers:   headers,
