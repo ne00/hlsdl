@@ -115,6 +115,7 @@ func (hlsDl *HlsDl) downloadSegments(segmentsDir string, segments []*Segment) er
 					if (strings.Contains(err.Error(), "connection reset by peer") || strings.Contains(err.Error(), "closed the connection")) && tried < 3 {
 						time.Sleep(time.Second)
 						log.Println("Retry download segment ", segment.SeqId)
+						log.Println("Retry error",err.Error())
 						goto DOWNLOAD
 					}
 					downloadResultChan <- &DownloadResult{Err: err, SeqId: segment.SeqId}
